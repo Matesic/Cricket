@@ -1,8 +1,11 @@
 import com.formdev.flatlaf.FlatDarkLaf;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class Main {
 
@@ -16,7 +19,6 @@ public class Main {
   public static void main(String... args) {
 
     FontUtils.loadFonts();
-    ImageUtils.loadImages();
 
     FlatDarkLaf.setup();
 
@@ -24,12 +26,17 @@ public class Main {
 
     JFrame frame = new JFrame();
     frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    frame.setIconImage(ImageUtils.get("icon"));
+
     frame.setTitle("Cricket");
     // frame.setResizable(false);
     frame.setMinimumSize(new Dimension(1600, 900));
     frame.setExtendedState(Frame.MAXIMIZED_BOTH);
     frame.setLayout(new GridLayout(3, 1));
+    try (InputStream in = Main.class.getResourceAsStream("images/icon.png")) {
+      frame.setIconImage(ImageIO.read(in));
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
 
     scoreboard = new Scoreboard(game);
     frame.add(scoreboard);

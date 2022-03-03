@@ -1,9 +1,8 @@
 import javax.swing.UIManager;
 import java.awt.Font;
 import java.awt.FontFormatException;
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Paths;
+import java.io.InputStream;
 
 public class FontUtils {
 
@@ -22,9 +21,8 @@ public class FontUtils {
   }
 
   private static Font createFont(final String name) {
-    String path = Paths.get("").toAbsolutePath().toString().concat("/src/main/resources/fonts/");
-    try {
-      return Font.createFont(Font.TRUETYPE_FONT, new File(path.concat(name)));
+    try (InputStream in = Main.class.getResourceAsStream("fonts/".concat(name))) {
+      return Font.createFont(Font.TRUETYPE_FONT, in);
     } catch (IOException | FontFormatException e) {
       e.printStackTrace();
     }

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class ImageUtils {
 
@@ -29,6 +30,7 @@ public class ImageUtils {
     BufferedImage image = null;
     try {
       final URL url = Main.class.getResource("images/".concat(imageName).concat(".png"));
+      if (Objects.isNull(url)) return;
       image = ImageIO.read(url);
     } catch (IOException e) {
       e.printStackTrace();

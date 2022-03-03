@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<exe4j version="8.0" transformSequenceNumber="3">
+  <directoryPresets config="D:/Fran/Projects/Java/Intellij/Cricket/out/artifacts/Cricket_jar" />
+  <application name="Cricket" distributionSourceDir="D:/Fran/Projects/Java/Intellij/Cricket/out/artifacts" />
+  <executable name="cricket" wrapperType="embed" iconSet="true" iconFile="D:/Fran/Projects/Java/Intellij/Cricket/src/main/resources/images/icon.ico" executableMode="gui" singleInstance="true" />
+  <java mainClass="Main" allowVMPassthroughParameters="false" minVersion="11" maxVersion="15">
+    <classPath>
+      <archive location="D:/Fran/Projects/Java/Intellij/Cricket/out/artifacts/Cricket_jar/Cricket.jar" failOnError="false" />
+    </classPath>
+  </java>
+</exe4j>
